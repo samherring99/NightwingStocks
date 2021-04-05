@@ -19,8 +19,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 ALPACA_BASE_URL = "https://paper-api.alpaca.markets"
 
-ACCESS_KEY = "PKA75YWQ04BA33UNY09Z"
-SECRET_KEY = "gZXqbVXq8TtGKMx2CYlPWN97ywe9qjQU9RJCZh2E"
+ACCESS_KEY = ""
+SECRET_KEY = ""
 
 TICKER = "AM.SNDL"
 
@@ -39,7 +39,7 @@ class TradeBot:
 	def __init__(self):
 		self.network = Nightwing()
 		self.network.train()
-		#self.network.load_state_dict(torch.load('best_custom_model_weight.pth'))
+		self.network.load_state_dict(torch.load('best_custom_model_weight.pth'))
 		self.criterion = nn.CrossEntropyLoss()
 		self.optimizer = optim.SGD(self.network.parameters(), lr=0.002, momentum=0.9)
 		self.scheduler = lr_scheduler.StepLR(self.optimizer, step_size=7, gamma=0.1)
